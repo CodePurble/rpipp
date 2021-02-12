@@ -1,16 +1,23 @@
-PREFIX ?= /usr/local
-DOCDIR ?= $(PREFIX)/share/doc/rpipp
+PREFIX=/usr/local
+BINDIR=$(PREFIX)/bin
+MANDIR=$(PREFIX)/man/man1
+DOCDIR=$(PREFIX)/share/rpipp/doc
 
 all:
-    @echo Run \'make install\' to install rpipp.
+	@echo "Run 'make install' to install rpipp."
 
 install:
-    @mkdir -p $(DESTDIR)$(PREFIX)/bin
-    @cp -p rpipp $(DESTDIR)$(PREFIX)/bin/rpipp
-    @mkdir -p $(DESTDIR)$(DOCDIR)
-    @cp -p rpipp.1 $(DESTDIR)$(DOCDIR)
-    @chmod 755 $(DESTDIR)$(PREFIX)/bin/rpipp
+	@mkdir -vp $(BINDIR)
+	@cp -vp ./rpipp $(BINDIR)/rpipp
+	@mkdir -vp $(DOCDIR)
+	@cp -vp ./README.adoc $(DOCDIR)/README.adoc
+	@mkdir -vp $(MANDIR)
+	@cp -vp ./doc/rpipp.1 $(MANDIR)/rpipp.1
+	@chmod 755 $(BINDIR)/rpipp
+	@mandb -q
 
 uninstall:
-    @rm -rf $(DESTDIR)$(PREFIX)/bin/rpipp
-    @rm -rf $(DESTDIR)$(DOCDIR)
+	@rm -rfv $(BINDIR)/rpipp
+	@rm -rfv $(MANDIR)/rpipp.1
+	@rm -rdfv $(PREFIX)/share/rpipp
+	@mandb -q

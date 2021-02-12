@@ -28,7 +28,7 @@
 .  LINKSTYLE blue R < >
 .\}
 .SH "NAME"
-rpipp \- the one command to program the Raspberry Pi Pico
+rpipp \- one command to program the Raspberry Pi Pico
 .SH "SYNOPSIS"
 .sp
 \fBrpipp\fP [\fIOPTION\fP]...
@@ -68,6 +68,12 @@ Programming done successfully
 Failure.
 Programming failed
 .RE
+.SH "EXAMPLES"
+.sp
+\fBMount /dev/sdb1 as the Pico board at /mnt/pico, and load the hello.uf2 binary onto it\fP
+.RS 4
+rpipp \-d /dev/sdb1 \-u hello.uf2
+.RE
 .SH "RESOURCES"
 .sp
 \fBProject web site:\fP \c
@@ -76,7 +82,7 @@ Programming failed
 .sp
 Copyright \(co 2021 CodePurble.
 .br
-Free use of this software is granted under the terms of the GPLv3 License.= Document Title
+Free use of this software is granted under the terms of the GPLv3 License.
 .SH "AUTHOR"
 .sp
 CodePurble

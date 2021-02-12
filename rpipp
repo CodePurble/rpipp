@@ -20,7 +20,7 @@ Usage: ${0##*/} [OPTION1] [OPTION2]...
 
 The -d and -u options are MANDATORY
 
-Example: pico-program -d /dev/sdb1 -m /mnt/pico -u hello.uf2
+Example: ${0##*/} -d /dev/sdb1 -m /mnt/pico -u hello.uf2
 EOF
 }
 

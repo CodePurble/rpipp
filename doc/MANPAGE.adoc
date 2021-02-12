@@ -7,7 +7,7 @@ v0.1.0
 
 == Name
 
-rpipp - the one command to program the Raspberry Pi Pico
+rpipp - one command to program the Raspberry Pi Pico
 
 == Synopsis
 
@@ -38,6 +38,11 @@ rpipp - the one command to program the Raspberry Pi Pico
 *1*::
     Failure.
     Programming failed
+
+== Examples
+
+*Mount /dev/sdb1 as the Pico board at /mnt/pico, and load the hello.uf2 binary onto it*::
+    rpipp -d /dev/sdb1 -u hello.uf2
 
 == Resources
 
