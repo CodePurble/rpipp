@@ -1,0 +1,82 @@
+'\" t
+.\"     Title: rpipp
+.\"    Author: CodePurble
+.\" Generator: Asciidoctor 2.0.12
+.\"      Date: 2021-02-12
+.\"    Manual: RPIPP
+.\"    Source: RPIPP
+.\"  Language: English
+.\"
+.TH "RPIPP" "1" "2021-02-12" "RPIPP" "RPIPP"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+rpipp \- the one command to program the Raspberry Pi Pico
+.SH "SYNOPSIS"
+.sp
+\fBrpipp\fP [\fIOPTION\fP]...
+.SH "OPTIONS"
+.sp
+\-d \fIDEVICE\fP
+.RS 4
+Specify a device to be mounted by its file path. e.g. /dev/sdb1.
+This option is MANDATORY
+.RE
+.sp
+\-h
+.RS 4
+Prints help and exits
+.RE
+.sp
+\-m \fIMOUNT_PT\fP
+.RS 4
+Mount \fIDEVICE\fP at \fIMOUNT_PT\fP. Defaults to /mnt/pico
+.RE
+.sp
+\-u \fIUF2_FILE\fP
+.RS 4
+The .uf2 file to be copied onto the board.
+This option is MANDATORY
+.RE
+.SH "EXIT STATUS"
+.sp
+\fB0\fP
+.RS 4
+Success.
+Programming done successfully
+.RE
+.sp
+\fB1\fP
+.RS 4
+Failure.
+Programming failed
+.RE
+.SH "RESOURCES"
+.sp
+\fBProject web site:\fP \c
+.URL "https://github.com/CodePurble/rpipp" "" ""
+.SH "COPYING"
+.sp
+Copyright \(co 2021 CodePurble.
+.br
+Free use of this software is granted under the terms of the GPLv3 License.= Document Title
+.SH "AUTHOR"
+.sp
+CodePurble

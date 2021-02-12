@@ -1,0 +1,49 @@
+= rpipp(1)
+CodePurble
+v0.1.0
+:doctype: manpage
+:manmanual: RPIPP
+:mansource: RPIPP
+
+== Name
+
+rpipp - the one command to program the Raspberry Pi Pico
+
+== Synopsis
+
+*rpipp* [_OPTION_]...
+
+== Options
+
+-d _DEVICE_::
+    Specify a device to be mounted by its file path. e.g. /dev/sdb1.
+    This option is MANDATORY
+
+-h::
+    Prints help and exits
+
+-m _MOUNT_PT_::
+    Mount _DEVICE_ at _MOUNT_PT_. Defaults to /mnt/pico
+
+-u _UF2_FILE_::
+    The .uf2 file to be copied onto the board.
+    This option is MANDATORY
+
+== Exit status
+
+*0*::
+    Success.
+    Programming done successfully
+
+*1*::
+    Failure.
+    Programming failed
+
+== Resources
+
+*Project web site:* https://github.com/CodePurble/rpipp
+
+== Copying
+
+Copyright (C) 2021 {author}. +
+Free use of this software is granted under the terms of the GPLv3 License.

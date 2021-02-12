@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+OPTIND=1
+MOUNT_PT=""
+DEVICE=""
+UF2_FILE=""
+
+show_help()
+{
+# The ${0##*/} is to filter out the unwanted path details from $0
+cat << EOF
+Usage: ${0##*/} [OPTION1] [OPTION2]...
+
+-h             Show this help and exit
+-d DEVICE      Device to mount
+-m MOUNT_PT    Mount point
+-u UF2_FILE    UF2 file
+
+The -d and -u options are MANDATORY
+
+Example: pico-program -d /dev/sdb1 -m /mnt/pico -u hello.uf2
+EOF
+}
+
+exit_error()
+{
+    show_help
+    exit 1
+}
+
+if [[ $# -eq 0 ]]; then
+    echo -e "Invalid usage\n" >&2
+    exit_error
+else
+    while getopts ":h?u:d:m:" opt; do
+        # handle nasty case where a flag is passed as an argument
+        if [[ $OPTARG == -* ]]; then
+            echo -e "Option -$opt requires an argument.\n" >&2
+            exit_error
+        fi
+        case $opt in
+            h)
+                show_help
+                exit 0
+                ;;
+            u)
+                UF2_FILE=$OPTARG
+                ;;
+            d)
+                DEVICE=$OPTARG
+                ;;
+            m)
+                MOUNT_PT=$OPTARG
+                ;;
+            \?)
+                echo -e "Invalid option: -$OPTARG\n" >&2
+                exit_error
+                ;;
+            :)
+                echo -e "Option -$OPTARG requires an argument.\n" >&2
+                exit_error
+                ;;
+        esac
+    done
+
+    shift $((OPTIND-1))
+
+    [ "${1:-}" = "--" ] && shift
+
+    if [[ -z "$UF2_FILE" ]]; then
+        echo -e "Missing -u option\n"
+        exit_error
+    fi
+
+    if [[ -z "$DEVICE" ]]; then
+        echo -e "Missing -d option\n"
+        exit_error
+    fi
+
+    if [[ -z "$MOUNT_PT" ]]; then
+        MOUNT_PT="/mnt/pico"
+    fi
+
+    if [[ ! "$UF2_FILE" == *.uf2 ]]; then
+        echo Invalid uf2 file
+        exit 1
+    fi
+
+    [[ -d "$MOUNT_PT" ]] || sudo mkdir -vp "$MOUNT_PT"
+
+    sudo mount -v "$DEVICE" "$MOUNT_PT"
+    sudo cp -v "$UF2_FILE" "$MOUNT_PT"
+    sync
+    sudo umount -v "$MOUNT_PT" && echo "Done"
+fi

@@ -1,0 +1,3 @@
+= `rpipp` - Program the Raspberry Pi Pico from the command line
+This script simplifies the process of programming the Raspberry Pi Pico from
+the command line to a single command.
