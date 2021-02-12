@@ -1,0 +1,4 @@
+= TODO
+
+* [ ] Interactive selection of device
+* [ ] Session management
