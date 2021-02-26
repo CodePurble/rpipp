@@ -23,10 +23,25 @@ $ sudo make uninstall
 
 == Help
 
-See:
+Running `rpipp -h` gives-
+
+[source, sh]
+----
+Usage: rpipp [OPTION1] [OPTION2]...
+
+-h             Show this help and exit
+-d DEVICE      Device to mount
+-m MOUNT_PT    Mount point
+-u UF2_FILE    UF2 file
+
+The -d and -u options are MANDATORY
+
+Example: rpipp -d /dev/sdb1 -m /mnt/pico -u hello.uf2
+----
+
+Also see:
 
 * `$ man rpipp`
-* `$ rpipp -h`
 
 == Extras
 
